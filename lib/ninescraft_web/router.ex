@@ -19,8 +19,12 @@ defmodule NinescraftWeb.Router do
     get "/", PageController, :index
   end
 
-  # Other scopes may use custom stacks.
-  # scope "/api", NinescraftWeb do
-  #   pipe_through :api
-  # end
+  scope "/api", NinescraftWeb do
+    pipe_through :api
+    resources "/accounts", AccountController do
+      resources "/worlds", WorldController
+      # resources "/properties", PropertiesController
+    end
+  end
+
 end
