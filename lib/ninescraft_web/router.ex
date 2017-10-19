@@ -21,9 +21,8 @@ defmodule NinescraftWeb.Router do
 
   scope "/api", NinescraftWeb do
     pipe_through :api
-    resources "/accounts", AccountController do
-      resources "/worlds", WorldController
-      # resources "/properties", PropertiesController
+    resources "/users", UserController, except: [:new, :edit] do
+      resources "/worlds", WorldController, except: [:new, :edit]
     end
   end
 
